@@ -17,6 +17,7 @@
       curl
       fastfetch
       neovim
+      yazi
       zellij
       bat
       ripgrep
@@ -49,6 +50,11 @@
       LESS_TERMCAP_ue = ''$'\E[0m' '';
     };
     shell.enableBashIntegration = true;
+
+    file."tools" = {
+        target = "${config.xdg.configHome}/tools";
+        text = builtins.readFile ./tools;
+    };
   };
 
   nix.assumeXdg = true;
@@ -63,6 +69,7 @@
     historyFileSize = 1000;
 
     initExtra = ''
+      source ${config.xdg.configHome}/tools
       PS1="''${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
     '';
   };
