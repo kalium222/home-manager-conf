@@ -11,8 +11,13 @@
         neovim
     ];
     home.sessionVariables = {
-        EDITOR = "nvim";
+        EDITOR = pkgs.neovim;
     };
     programs.home-manager.enable = true;
-    programs.bash.enable = true;
+    programs.bash = {
+        enable = true;
+        historySize = 1000;
+        historyFile = "${config.xdg.stateHome}/histfile";
+        historyFileSize = 1000;
+    };
 }
