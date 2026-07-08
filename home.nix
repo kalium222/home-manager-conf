@@ -52,8 +52,8 @@
     shell.enableBashIntegration = true;
 
     file."tools" = {
-        target = "${config.xdg.configHome}/tools";
-        text = builtins.readFile ./tools;
+      target = "${config.xdg.configHome}/tools";
+      text = builtins.readFile ./tools;
     };
   };
 
