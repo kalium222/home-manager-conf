@@ -38,16 +38,6 @@
     sessionVariables = {
       EDITOR = lib.getExe pkgs.neovim;
       PAGER = "${lib.getExe pkgs.bat} -p";
-
-      MANROFFOPT = "-c";
-      LESS = "-R";
-      LESS_TERMCAP_mb = ''$'\E[1;31m' '';
-      LESS_TERMCAP_md = ''$'\E[1;36m' '';
-      LESS_TERMCAP_me = ''$'\E[0m' '';
-      LESS_TERMCAP_so = ''$'\E[01;33m' '';
-      LESS_TERMCAP_se = ''$'\E[0m' '';
-      LESS_TERMCAP_us = ''$'\E[1;32m' '';
-      LESS_TERMCAP_ue = ''$'\E[0m' '';
     };
     shell.enableBashIntegration = true;
 
@@ -71,6 +61,7 @@
     initExtra = ''
       source ${config.xdg.configHome}/tools
       PS1="''${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
+      set -o vi
     '';
   };
 }
